@@ -1,0 +1,128 @@
+{
+  "date": "2026-10-03",
+  "host": "newhina (rikka)",
+  "status": "passed",
+  "scope": "initial scalar RV64GC baseline; not an accelerator result or full-policy speedup",
+  "measurement": "one synchronous GEMM after one warmup; VM/HAL dispatch is inside the gem5 ROI",
+  "precision": {
+    "model_native_action_expert": "bfloat16",
+    "simulation": "float32",
+    "reason": "matches the existing pi0_ffn scalar baseline path; precision conversion effects are out of scope for this initial baseline"
+  },
+  "provenance": {
+    "lerobot_commit": "ff71cae1ae2d09fd035553c35da65888ed6c8304",
+    "smolvla_checkpoint_revision": "d9f33c94a60fb382c90dea2164c96845bd955e28",
+    "smolvlm_revision": "7b375e1b73b11138ff12fe22c8f2822d8fe03467",
+    "iree_commit": "e4a3b0405d7d23554da26403658d0e8c3c5ecf25",
+    "gem5_commit": "f5c5a6e390f55dd5984977815bf9d0bd05da6945",
+    "pixi_lock_sha256": "1171b5638804e303372ea701e4d09d2b2885a3460be703657725610aaf3513d5",
+    "workload_manifest_sha256": "2b4a7d4866f6502a945ea2880c7d95dc03a01eaa7d442116b7e901ce4420108f",
+    "matched_pi0_hardware_sha256": "c93a9a67730524ea716e0681c2b40d7d6e69ddc45979af70c2fcda9b6a29703a"
+  },
+  "simulated_workloads": [
+    {
+      "id": "tiny",
+      "role": "toolchain control",
+      "shape_mkn": [4, 64, 128],
+      "calls_per_inference": 0,
+      "cycles": 307367,
+      "instructions": 153331,
+      "ipc": 0.49885316250605954,
+      "l1d_misses": 357,
+      "l1i_misses": 401,
+      "dram_read_bytes": 89536,
+      "dram_write_bytes": 19328,
+      "gflops_per_second": 0.2132174241216526,
+      "measured_flops_per_dram_byte": 0.6019988242210464,
+      "max_abs_error_vs_jax": 0.0,
+      "riscv_equals_host": true,
+      "passed": true
+    },
+    {
+      "id": "linear-captured-nn-linear-1x32x960-b1-819e30295d",
+      "role": "state input projection",
+      "shape_mkn": [1, 32, 960],
+      "calls_per_inference": 1,
+      "cycles": 424999,
+      "instructions": 121710,
+      "ipc": 0.2863771444168104,
+      "l1d_misses": 2063,
+      "l1i_misses": 358,
+      "dram_read_bytes": 177536,
+      "dram_write_bytes": 22336,
+      "gflops_per_second": 0.1445650460354024,
+      "measured_flops_per_dram_byte": 0.30739673390970224,
+      "max_abs_error_vs_jax": 0.0,
+      "riscv_equals_host": true,
+      "passed": true
+    },
+    {
+      "id": "linear-captured-nn-linear-50x720x2048-b1-cfc8de68ac",
+      "role": "action expert FFN gate/up projection",
+      "shape_mkn": [50, 720, 2048],
+      "calls_per_inference": 320,
+      "cycles": 744580850,
+      "instructions": 260392569,
+      "ipc": 0.3497169837231242,
+      "l1d_misses": 661936,
+      "l1i_misses": 567,
+      "dram_read_bytes": 48158528,
+      "dram_write_bytes": 851648,
+      "gflops_per_second": 0.19803893694015903,
+      "measured_flops_per_dram_byte": 3.0086812991653,
+      "max_abs_error_vs_jax": 9.5367431640625e-06,
+      "riscv_equals_host": true,
+      "passed": true
+    },
+    {
+      "id": "linear-captured-nn-linear-50x2048x720-b1-f7d49e4b25",
+      "role": "action expert FFN down projection",
+      "shape_mkn": [50, 2048, 720],
+      "calls_per_inference": 160,
+      "cycles": 853440467,
+      "instructions": 290574067,
+      "ipc": 0.340473739218649,
+      "l1d_misses": 1810974,
+      "l1i_misses": 810,
+      "dram_read_bytes": 160694592,
+      "dram_write_bytes": 2561152,
+      "gflops_per_second": 0.1727783081558517,
+      "measured_flops_per_dram_byte": 0.9032208998416619,
+      "max_abs_error_vs_jax": 3.147125244140625e-05,
+      "riscv_equals_host": true,
+      "passed": true
+    }
+  ],
+  "build_only_workloads": [
+    {
+      "id": "linear-captured-nn-linear-241x960x2560-b1-831ce156cc",
+      "role": "language/VLM representative",
+      "shape_mkn": [241, 960, 2560],
+      "host_max_abs_error_vs_jax": 1.52587890625e-05,
+      "host_verification_passed": true,
+      "riscv_static_build_passed": true,
+      "gem5_status": "not_run"
+    },
+    {
+      "id": "linear-captured-nn-linear-1024x768x3072-b1-a04926422a",
+      "role": "vision representative",
+      "shape_mkn": [1024, 768, 3072],
+      "host_max_abs_error_vs_jax": 1.430511474609375e-05,
+      "host_verification_passed": true,
+      "riscv_static_build_passed": true,
+      "gem5_status": "not_run"
+    }
+  ],
+  "initial_observations": {
+    "down_vs_gate_up_cycle_ratio": 1.14620254737951,
+    "down_vs_gate_up_cycle_increase_percent": 14.6202547379509,
+    "down_vs_gate_up_dram_read_ratio": 3.33678371564845,
+    "down_vs_gate_up_l1d_miss_ratio": 2.73587476734911,
+    "down_vs_gate_up_throughput_drop_percent": 12.7553849634834,
+    "captured_call_weighted_action_ffn_cycle_share": {
+      "gate_up": 0.635686981331133,
+      "down": 0.364313018668867
+    },
+    "interpretation": "The down projection performs the same FLOPs as one gate/up projection but has substantially more DRAM reads and L1D misses. This is initial evidence of a layout/cache locality bottleneck. Across captured call counts, gate/up remains the larger aggregate target because it occurs twice per layer."
+  }
+}

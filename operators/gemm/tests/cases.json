@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "suite": "smolvla-action-expert-int8",
+  "source": {
+    "model": "lerobot/smolvla_base",
+    "workload_manifest_sha256": "2b4a7d4866f6502a945ea2880c7d95dc03a01eaa7d442116b7e901ce4420108f",
+    "selection": "all distinct captured action-expert nn.Linear GEMM shapes"
+  },
+  "arithmetic": {
+    "activation": "int8",
+    "weight": "int8",
+    "accumulator": "int32",
+    "output": "int32",
+    "weight_layout": "row-major [N,K]",
+    "comparison": "exact"
+  },
+  "cases": [
+    {"id": "action_m50_n320_k720", "m": 50, "m_storage": 56, "n": 320, "k": 720, "calls_per_action_chunk": 160},
+    {"id": "action_m50_n720_k960", "m": 50, "m_storage": 56, "n": 720, "k": 960, "calls_per_action_chunk": 160},
+    {"id": "down", "m": 50, "m_storage": 56, "n": 720, "k": 2048, "calls_per_action_chunk": 160},
+    {"id": "action_m50_n960_k720", "m": 50, "m_storage": 56, "n": 960, "k": 720, "calls_per_action_chunk": 160},
+    {"id": "gate_up", "m": 50, "m_storage": 56, "n": 2048, "k": 720, "calls_per_action_chunk": 320},
+    {"id": "action_m241_n320_k320", "m": 241, "m_storage": 248, "n": 320, "k": 320, "calls_per_action_chunk": 160}
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "operators": [
+    {
+      "id": "gemm",
+      "name": "Dense GEMM and Linear",
+      "level": "L0",
+      "status": "measured",
+      "path": "operators/gemm",
+      "models": ["pi0", "pi05", "openvla", "openvla_oft", "smolvla", "groot"]
+    },
+    {
+      "id": "attention",
+      "name": "Attention batched matmul",
+      "level": "L0/L1",
+      "status": "planned",
+      "path": "operators/attention",
+      "models": ["pi0", "pi05", "openvla", "openvla_oft", "smolvla", "groot"]
+    },
+    {
+      "id": "softmax_mask",
+      "name": "Scale, mask, and stable softmax",
+      "level": "L0",
+      "status": "planned",
+      "path": "operators/softmax_mask",
+      "models": ["pi0", "pi05", "openvla", "openvla_oft", "smolvla", "groot"]
+    },
+    {
+      "id": "normalization",
+      "name": "LayerNorm, RMSNorm, AdaLN, and AdaRMSNorm",
+      "level": "L0",
+      "status": "planned",
+      "path": "operators/normalization",
+      "models": ["pi0", "pi05", "openvla", "openvla_oft", "smolvla", "groot"]
+    },
+    {
+      "id": "activations_elementwise",
+      "name": "Activation, residual, gate, and affine elementwise operations",
+      "level": "L0",
+      "status": "planned",
+      "path": "operators/activations_elementwise",
+      "models": ["pi0", "pi05", "openvla", "openvla_oft", "smolvla", "groot"]
+    },
+    {
+      "id": "position_encoding",
+      "name": "RoPE and position indexing",
+      "level": "L0",
+      "status": "planned",
+      "path": "operators/position_encoding",
+      "models": ["pi0", "pi05", "openvla", "openvla_oft", "smolvla"]
+    },
+    {
+      "id": "vision_frontend",
+      "name": "Patch embedding, resize, and visual projection",
+      "level": "L0/L1",
+      "status": "planned",
+      "path": "operators/vision_frontend",
+      "models": ["pi0", "pi05", "openvla", "openvla_oft", "smolvla", "groot"]
+    },
+    {
+      "id": "tensor_data_movement",
+      "name": "Reshape, transpose, concatenate, gather, and cache update",
+      "level": "L0",
+      "status": "planned",
+      "path": "operators/tensor_data_movement",
+      "models": ["pi0", "pi05", "openvla", "openvla_oft", "smolvla", "groot"]
+    },
+    {
+      "id": "quantization",
+      "name": "Quantize, dequantize, requantize, and saturation",
+      "level": "L0",
+      "status": "planned",
+      "path": "operators/quantization",
+      "models": ["pi0", "pi05", "openvla", "openvla_oft", "smolvla", "groot"]
+    },
+    {
+      "id": "flow_update",
+      "name": "Timestep embedding and continuous action update",
+      "level": "L0/L1",
+      "status": "planned",
+      "path": "operators/flow_update",
+      "models": ["pi0", "pi05", "smolvla", "groot"]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "results": [
+    {
+      "id": "smolvla-initial-fp32-rv64gc",
+      "operator": "gemm",
+      "status": "measured",
+      "scope": "hotspot baseline",
+      "path": "results/gemm/smolvla/initial-gemm-baseline.json"
+    },
+    {
+      "id": "smolvla-cadl-v2-full-shape",
+      "operator": "gemm",
+      "status": "measured",
+      "scope": "isolated full-shape Rocket/RoCC",
+      "path": "results/gemm/smolvla/cadl-v2-full-shape.json"
+    },
+    {
+      "id": "smolvla-standalone-systolic-real-shapes",
+      "operator": "gemm",
+      "status": "measured",
+      "scope": "standalone matched RTL",
+      "path": "results/gemm/smolvla/systolic-array-real-shapes.json"
+    },
+    {
+      "id": "smolvla-systolic-rocket-full-shapes",
+      "operator": "gemm",
+      "status": "measured",
+      "scope": "isolated full-shape Rocket/RoCC",
+      "path": "results/gemm/smolvla/systolic-rocket-full-shapes.json"
+    },
+    {
+      "id": "smolvla-six-shape-cpu-cadl",
+      "operator": "gemm",
+      "status": "partial",
+      "scope": "six-shape matched suite",
+      "path": "results/gemm/smolvla/action-gemm-suite-partial.json"
+    }
+  ]
+}

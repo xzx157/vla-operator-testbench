@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "candidate": "v2-n4-int8",
+  "scope": "full isolated SmolVLA GEMM shapes on Rocket/RoCC with DMA",
+  "platform": {
+    "host": "newhina",
+    "chipyard_commit": "48b0ecee03d31099c62b4f4b916bc190b52ce700",
+    "config": "APSRocketConfig",
+    "cpu_clock_hz": 500000000,
+    "simulator": "Verilator 5.034 release, 8 host threads",
+    "rtl_sha256": "d95a2c29b44e5e401740823e6ef0e346581f0dae986d803b3e30726e105d6c69",
+    "simulator_sha256_at_result_recording": "e890765b343ab2388843db535777641d4fd9452c6ddeecb2914376313262cec8"
+  },
+  "measurement_contract": {
+    "arithmetic": "signed INT8 x signed INT8 with signed INT32 accumulation/output",
+    "weight_layout": "native row-major [N,K]",
+    "m_policy": "pad 50 rows to 56 with zero activation rows",
+    "roi": "all CADL load/compute/store instructions for one complete padded GEMM; initialization and validation excluded",
+    "logical_macs_per_profile": 73728000,
+    "physical_macs_per_profile": 82575360,
+    "comparison": "same executable, shape, data, and ROI as v1; only the staged accelerator RTL changes"
+  },
+  "profiles": {
+    "gate_up": {
+      "shape": {"m": 50, "n": 2048, "k": 720},
+      "cycles": 42337935,
+      "v1_cycles": 112034097,
+      "speedup_over_v1": 2.6461870896632065,
+      "logical_macs_per_cycle": 1.7414170058128722,
+      "response": 720,
+      "mismatches": 0,
+      "guard_errors": 0,
+      "fnv1a_u32_checksum": 203619782,
+      "normal_exit": true,
+      "elf_sha256": "8df617cdc7411485907dfe925dae41fa1ff0c656584da8ca926a21224421c86b",
+      "log_sha256": "caf51128140257fc5e14773d685caf14b3f9dd8d15ede4162d53164f1ea91c66"
+    },
+    "down": {
+      "shape": {"m": 50, "n": 720, "k": 2048},
+      "cycles": 41448909,
+      "v1_cycles": 111125524,
+      "speedup_over_v1": 2.681024101261628,
+      "logical_macs_per_cycle": 1.7787681697484485,
+      "response": 2048,
+      "mismatches": 0,
+      "guard_errors": 0,
+      "fnv1a_u32_checksum": 781837125,
+      "normal_exit": true,
+      "elf_sha256": "9de807c0cfa4dca0d23cd4b57fb99c75a666437941067dc3c757ec944d95381e",
+      "log_sha256": "5d53d9615be1b45e1fada918e6473adc9823a91bb394cdebe9c51470913e37e8"
+    }
+  },
+  "validation": "both programs exited normally; every logical and padded output exact; leading and trailing memory guards intact",
+  "native_full_shape_baseline": "running at time of result recording"
+}

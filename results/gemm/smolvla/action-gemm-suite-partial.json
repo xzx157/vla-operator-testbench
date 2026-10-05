@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "status": "partial",
+  "recorded_at": "2026-10-05",
+  "scope": "all six distinct captured SmolVLA action-expert dense GEMM shapes",
+  "classification": "call-weighted isolated-kernel projection, not measured full inference",
+  "platform": {
+    "host_alias": "newhina",
+    "config": "APSRocketConfig",
+    "cpu_clock_hz": 500000000,
+    "simulator": "Verilator 5.034",
+    "simulator_threads": 8
+  },
+  "baselines": {
+    "native-layout-cpu": "base Rocket scalar path with native row-major [N,K] weights",
+    "cadl-v2": "Aquas-generated accelerator including command, DMA, compute, and writeback"
+  },
+  "measured_profiles": {
+    "action_m50_n320_k720": {
+      "shape": {"m": 50, "m_storage": 56, "n": 320, "k": 720},
+      "calls_per_action_chunk": 160,
+      "cycles": {"native-layout-cpu": 140835135, "cadl-v2": 17154954},
+      "speedup_cpu_over_cadl": 8.20958977797317,
+      "logical_macs": 11520000,
+      "cadl_physical_macs_with_padding": 12902400,
+      "padding_work_overhead_fraction": 0.12,
+      "logical_macs_per_cycle": {"native-layout-cpu": 0.0817977701374022, "cadl-v2": 0.671526137581016},
+      "checksum": 2316095367,
+      "correctness": "exact; guards intact; both simulators finished normally"
+    },
+    "action_m50_n720_k960": {
+      "shape": {"m": 50, "m_storage": 56, "n": 720, "k": 960},
+      "calls_per_action_chunk": 160,
+      "cycles": {"native-layout-cpu": 426748002, "cadl-v2": 52091273},
+      "speedup_cpu_over_cadl": 8.19231278913072,
+      "logical_macs": 34560000,
+      "cadl_physical_macs_with_padding": 38707200,
+      "padding_work_overhead_fraction": 0.12,
+      "logical_macs_per_cycle": {"native-layout-cpu": 0.0809845619382654, "cadl-v2": 0.663450862489001},
+      "checksum": 512112005,
+      "correctness": "exact; guards intact; both simulators finished normally"
+    },
+    "action_m50_n960_k720": {
+      "shape": {"m": 50, "m_storage": 56, "n": 960, "k": 720},
+      "calls_per_action_chunk": 160,
+      "cycles": {"native-layout-cpu": 426918249, "cadl-v2": 52144575},
+      "speedup_cpu_over_cadl": 8.18720353939024,
+      "logical_macs": 34560000,
+      "cadl_physical_macs_with_padding": 38707200,
+      "padding_work_overhead_fraction": 0.12,
+      "logical_macs_per_cycle": {"native-layout-cpu": 0.080952266812094, "cadl-v2": 0.66277268536564},
+      "checksum": 2015146952,
+      "correctness": "exact; guards intact; both simulators finished normally"
+    },
+    "action_m241_n320_k320": {
+      "shape": {"m": 241, "m_storage": 248, "n": 320, "k": 320},
+      "calls_per_action_chunk": 160,
+      "cycles": {"native-layout-cpu": 302239239, "cadl-v2": 33853942},
+      "speedup_cpu_over_cadl": 8.9277413838542,
+      "logical_macs": 24678400,
+      "cadl_physical_macs_with_padding": 25395200,
+      "padding_work_overhead_fraction": 0.0290456431535269,
+      "logical_macs_per_cycle": {"native-layout-cpu": 0.0816518731374916, "cadl-v2": 0.728966806878797},
+      "checksum": 743041701,
+      "correctness": "exact; guards intact; both simulators finished normally"
+    }
+  },
+  "pending_profiles": {
+    "gate_up": {
+      "shape": {"m": 50, "m_storage": 56, "n": 2048, "k": 720},
+      "calls_per_action_chunk": 320,
+      "cadl_v2_cycles": 42337935,
+      "native_layout_cpu": "running at record time"
+    },
+    "down": {
+      "shape": {"m": 50, "m_storage": 56, "n": 720, "k": 2048},
+      "calls_per_action_chunk": 160,
+      "cadl_v2_cycles": 41448909,
+      "native_layout_cpu": "running at record time"
+    }
+  },
+  "partial_call_weighted_metrics": {
+    "coverage": "four of six distinct shapes; excludes gate_up and down",
+    "native_layout_cpu_cycles": 207478500000,
+    "cadl_v2_cycles": 24839159040,
+    "speedup_cpu_over_cadl": 8.35287940569505,
+    "logical_macs": 16850944000,
+    "cadl_physical_macs_with_padding": 18513920000,
+    "logical_macs_per_cycle": {"native-layout-cpu": 0.0812177840113554, "cadl-v2": 0.678402355444639},
+    "cadl_physical_macs_per_cycle": 0.74535212605974
+  },
+  "excluded_data": {
+    "linalg": "logs lacked a complete SMOL_GEMM_FULL result line and are not valid measurements"
+  }
+}

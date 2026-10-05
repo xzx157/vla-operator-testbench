@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "status": "measured",
+  "recorded_at": "2026-10-05",
+  "scope": "complete real SmolVLA FFN GEMM shapes on Rocket/RoCC with DMA",
+  "platform": {
+    "host_alias": "newhina",
+    "config": "APSRocketConfig",
+    "cpu_clock_hz": 500000000,
+    "simulator": "Verilator 5.034",
+    "simulator_threads": 8
+  },
+  "design": {
+    "name": "handwritten 4x4 output-stationary systolic RoCC",
+    "generated_by_aquas": false,
+    "arithmetic": "signed INT8 x signed INT8 with signed INT32 accumulation/output",
+    "roi": "complete GEMM command, DMA, accelerator compute, and writeback; initialization and validation excluded"
+  },
+  "profiles": {
+    "gate_up": {
+      "shape": {"m": 50, "n": 2048, "k": 720},
+      "cycles": 48886278,
+      "response": 720,
+      "errors": 0,
+      "mismatches": 0,
+      "guard_errors": 0,
+      "guards": "ok",
+      "checksum": 203619782,
+      "normal_verilator_finish": true,
+      "exit_code": 0,
+      "finished_at": "2026-10-05T00:13:13+08:00",
+      "host_walltime_seconds": 10469.404,
+      "cadl_v2_cycles": 42337935,
+      "cadl_v2_speedup_over_systolic": 1.15466845513368
+    },
+    "down": {
+      "shape": {"m": 50, "n": 720, "k": 2048},
+      "cycles": 48689962,
+      "response": 2048,
+      "errors": 0,
+      "mismatches": 0,
+      "guard_errors": 0,
+      "guards": "ok",
+      "checksum": 781837125,
+      "normal_verilator_finish": true,
+      "exit_code": 0,
+      "finished_at": "2026-10-04T23:11:36+08:00",
+      "host_walltime_seconds": 6772.4,
+      "cadl_v2_cycles": 41448909,
+      "cadl_v2_speedup_over_systolic": 1.17469827734187
+    }
+  },
+  "validation": "each log contained one complete result, zero numerical/guard errors, expected checksum, normal Verilator finish, and exit_code=0"
+}
