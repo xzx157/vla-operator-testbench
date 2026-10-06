@@ -1,0 +1,215 @@
+{
+  "schema_version": 2,
+  "scope": "all captured SmolVLA action-expert dense GEMM shapes",
+  "classification": "call-weighted isolated-kernel projection, not measured full inference",
+  "platform": {
+    "host": "newhina",
+    "config": "APSRocketConfig",
+    "cpu_clock_hz": 500000000
+  },
+  "baselines": {
+    "native-layout-cpu": "base Rocket scalar path consuming native row-major [N,K] weights",
+    "cadl-v2": "Aquas-generated v2 accelerator including command, DMA, compute, and writeback"
+  },
+  "correctness": {
+    "exact_int32_match_across_both_modes": true,
+    "guards_intact": true,
+    "normal_simulator_exit": true
+  },
+  "profiles": {
+    "action_m50_n320_k720": {
+      "shape": {
+        "m": 50,
+        "m_storage": 56,
+        "n": 320,
+        "k": 720
+      },
+      "calls_per_action_chunk": 160,
+      "cycles": {
+        "native-layout-cpu": 140835135,
+        "cadl-v2": 17154954
+      },
+      "speedup_cpu_over_cadl": 8.209589777973173,
+      "logical_macs": 11520000,
+      "cadl_physical_macs_with_padding": 12902400,
+      "padding_rows": 6,
+      "padding_work_overhead_fraction": 0.1200000000000001,
+      "logical_macs_per_cycle": {
+        "native-layout-cpu": 0.08179777013740215,
+        "cadl-v2": 0.671526137581016
+      },
+      "cadl_physical_macs_per_cycle": 0.7521092740907379,
+      "checksum": 2316095367,
+      "host_walltime_seconds": {
+        "native-layout-cpu": 11757.649,
+        "cadl-v2": 2534.409
+      }
+    },
+    "action_m50_n720_k960": {
+      "shape": {
+        "m": 50,
+        "m_storage": 56,
+        "n": 720,
+        "k": 960
+      },
+      "calls_per_action_chunk": 160,
+      "cycles": {
+        "native-layout-cpu": 426748002,
+        "cadl-v2": 52091273
+      },
+      "speedup_cpu_over_cadl": 8.192312789130725,
+      "logical_macs": 34560000,
+      "cadl_physical_macs_with_padding": 38707200,
+      "padding_rows": 6,
+      "padding_work_overhead_fraction": 0.1200000000000001,
+      "logical_macs_per_cycle": {
+        "native-layout-cpu": 0.08098456193826538,
+        "cadl-v2": 0.6634508624890008
+      },
+      "cadl_physical_macs_per_cycle": 0.7430649659876809,
+      "checksum": 512112005,
+      "host_walltime_seconds": {
+        "native-layout-cpu": 32051.903,
+        "cadl-v2": 6018.459
+      }
+    },
+    "down": {
+      "shape": {
+        "m": 50,
+        "m_storage": 56,
+        "n": 720,
+        "k": 2048
+      },
+      "calls_per_action_chunk": 160,
+      "cycles": {
+        "native-layout-cpu": 920346868,
+        "cadl-v2": 41448909
+      },
+      "speedup_cpu_over_cadl": 22.2043689497352,
+      "logical_macs": 73728000,
+      "cadl_physical_macs_with_padding": 82575360,
+      "padding_rows": 6,
+      "padding_work_overhead_fraction": 0.1200000000000001,
+      "logical_macs_per_cycle": {
+        "native-layout-cpu": 0.08010892693123176,
+        "cadl-v2": 1.7787681697484485
+      },
+      "cadl_physical_macs_per_cycle": 1.9922203501182625,
+      "checksum": 781837125,
+      "host_walltime_seconds": {
+        "native-layout-cpu": 70070.733,
+        "cadl-v2": 7155.276
+      }
+    },
+    "action_m50_n960_k720": {
+      "shape": {
+        "m": 50,
+        "m_storage": 56,
+        "n": 960,
+        "k": 720
+      },
+      "calls_per_action_chunk": 160,
+      "cycles": {
+        "native-layout-cpu": 426918249,
+        "cadl-v2": 52144575
+      },
+      "speedup_cpu_over_cadl": 8.187203539390243,
+      "logical_macs": 34560000,
+      "cadl_physical_macs_with_padding": 38707200,
+      "padding_rows": 6,
+      "padding_work_overhead_fraction": 0.1200000000000001,
+      "logical_macs_per_cycle": {
+        "native-layout-cpu": 0.08095226681209404,
+        "cadl-v2": 0.6627726853656397
+      },
+      "cadl_physical_macs_per_cycle": 0.7423054076095165,
+      "checksum": 2015146952,
+      "host_walltime_seconds": {
+        "native-layout-cpu": 33277.856,
+        "cadl-v2": 7355.276
+      }
+    },
+    "gate_up": {
+      "shape": {
+        "m": 50,
+        "m_storage": 56,
+        "n": 2048,
+        "k": 720
+      },
+      "calls_per_action_chunk": 320,
+      "cycles": {
+        "native-layout-cpu": 919669594,
+        "cadl-v2": 42337935
+      },
+      "speedup_cpu_over_cadl": 21.722117387161184,
+      "logical_macs": 73728000,
+      "cadl_physical_macs_with_padding": 82575360,
+      "padding_rows": 6,
+      "padding_work_overhead_fraction": 0.1200000000000001,
+      "logical_macs_per_cycle": {
+        "native-layout-cpu": 0.08016792169819197,
+        "cadl-v2": 1.7414170058128722
+      },
+      "cadl_physical_macs_per_cycle": 1.9503870465104167,
+      "checksum": 203619782,
+      "host_walltime_seconds": {
+        "native-layout-cpu": 84537.862,
+        "cadl-v2": 10509.93
+      }
+    },
+    "action_m241_n320_k320": {
+      "shape": {
+        "m": 241,
+        "m_storage": 248,
+        "n": 320,
+        "k": 320
+      },
+      "calls_per_action_chunk": 160,
+      "cycles": {
+        "native-layout-cpu": 302239239,
+        "cadl-v2": 33853942
+      },
+      "speedup_cpu_over_cadl": 8.927741383854205,
+      "logical_macs": 24678400,
+      "cadl_physical_macs_with_padding": 25395200,
+      "padding_rows": 7,
+      "padding_work_overhead_fraction": 0.029045643153526868,
+      "logical_macs_per_cycle": {
+        "native-layout-cpu": 0.08165187313749159,
+        "cadl-v2": 0.7289668068787971
+      },
+      "cadl_physical_macs_per_cycle": 0.7501401166221647,
+      "checksum": 743041701,
+      "host_walltime_seconds": {
+        "native-layout-cpu": 28434.362,
+        "cadl-v2": 7733.604
+      }
+    }
+  },
+  "call_weighted_cycle_sums": {
+    "native-layout-cpu": 649028268960,
+    "cadl-v2": 45019123680
+  },
+  "call_weighted_metrics": {
+    "speedup_cpu_over_cadl": 14.416723736635825,
+    "logical_macs": 52240384000,
+    "logical_macs_per_cycle": {
+      "native-layout-cpu": 0.08049015196781761,
+      "cadl-v2": 1.160404284439861
+    }
+  },
+  "inputs": {
+    "action_m50_n320_k720_native-layout-cpu_log_sha256": "595d661d9f1e478d9c5ae7d924eac1a259162a0e802f4710d7e53ddd584c8568",
+    "action_m50_n320_k720_cadl-v2_log_sha256": "fbd672790c5d77e4eabd923062931d571886890518e654906de27afe1ee6574e",
+    "action_m50_n720_k960_native-layout-cpu_log_sha256": "870cee4c5c47c1e48e46e993bb9a27477f96bbc8c48eb11dd6234d02e1dc3510",
+    "action_m50_n720_k960_cadl-v2_log_sha256": "b308cf35fe76516f458e0923f98241e9b76f58ec76833fde3383cf3467a9f4a2",
+    "down_native-layout-cpu_log_sha256": "f60adcacec98a44ea3155e5a216452fc3a5c8268b80f73e8282ab8633c80eb41",
+    "down_cadl-v2_log_sha256": "5d53d9615be1b45e1fada918e6473adc9823a91bb394cdebe9c51470913e37e8",
+    "action_m50_n960_k720_native-layout-cpu_log_sha256": "6d4566313b6abf470998c3266ce0654882cfc7a5f895cc555bfb97c675c72b48",
+    "action_m50_n960_k720_cadl-v2_log_sha256": "649bfc575eae9e858db234bbf6614371128879df56ac5459f683dd0932cc2ae7",
+    "gate_up_native-layout-cpu_log_sha256": "5424d8e1e58cff5a5b85414c2b50e44639d0ac8b17974849db9f602d391c70c0",
+    "gate_up_cadl-v2_log_sha256": "caf51128140257fc5e14773d685caf14b3f9dd8d15ede4162d53164f1ea91c66",
+    "action_m241_n320_k320_native-layout-cpu_log_sha256": "394d8a58322fae98245ff9df8f030b764a6c26abd6015e8870ddc257b9ad1209",
+    "action_m241_n320_k320_cadl-v2_log_sha256": "ca9504b5750d60b4dc23059ffa7f137be4fd0eee12614d40c034b69820289dd9"
+  }
+}

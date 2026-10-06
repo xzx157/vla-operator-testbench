@@ -33,6 +33,31 @@ class RepositoryValidationTest(unittest.TestCase):
         self.assertEqual(len(suite["cases"]), 6)
         self.assertEqual(validate_gemm_cases(root), [])
 
+    def test_complete_smolvla_gemm_result_has_six_exact_profiles(self) -> None:
+        root = repository_root()
+        result = json.loads(
+            (
+                root
+                / "results"
+                / "gemm"
+                / "smolvla"
+                / "action-gemm-suite.json"
+            ).read_text(encoding="utf-8")
+        )
+        self.assertEqual(len(result["profiles"]), 6)
+        self.assertEqual(
+            result["correctness"],
+            {
+                "exact_int32_match_across_both_modes": True,
+                "guards_intact": True,
+                "normal_simulator_exit": True,
+            },
+        )
+        self.assertAlmostEqual(
+            result["call_weighted_metrics"]["speedup_cpu_over_cadl"],
+            14.416723736635825,
+        )
+
     def test_missing_operator_readme_is_rejected(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

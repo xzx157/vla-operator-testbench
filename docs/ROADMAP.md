@@ -10,9 +10,9 @@
 
 ## Phase 1: finish the GEMM baseline
 
-- [ ] Finish the two large native-layout CPU simulations for `gate_up` and
+- [x] Finish the two large native-layout CPU simulations for `gate_up` and
   `down`; do not substitute incomplete Linalg logs.
-- [ ] Produce the complete six-shape matched CPU/CADL record and call-weighted
+- [x] Produce the complete six-shape matched CPU/CADL record and call-weighted
   action-expert GEMM projection.
 - [ ] Add repeated-run variance or document why deterministic cycle simulation
   makes one run sufficient.

@@ -32,9 +32,9 @@
     {
       "id": "smolvla-six-shape-cpu-cadl",
       "operator": "gemm",
-      "status": "partial",
+      "status": "measured",
       "scope": "six-shape matched suite",
-      "path": "results/gemm/smolvla/action-gemm-suite-partial.json"
+      "path": "results/gemm/smolvla/action-gemm-suite.json"
     }
   ]
 }

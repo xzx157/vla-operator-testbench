@@ -61,8 +61,8 @@ The initial public records include:
 - the Aquas-generated CADL v2 full-shape Rocket/RoCC measurements;
 - the matched standalone 4x4 systolic-array comparison;
 - complete Rocket/RoCC systolic measurements for the two full FFN shapes;
-- a partial four-shape matched native-layout CPU versus CADL suite while the
-  two largest native-layout CPU simulations remain pending.
+- the complete six-shape matched native-layout CPU versus CADL suite, with a
+  14.417x call-weighted isolated-GEMM projection.
 
 See [the GEMM result notes](results/gemm/smolvla/README.md) for the exact scope
 of each number.
